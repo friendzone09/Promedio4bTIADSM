@@ -43,15 +43,27 @@ public class promedio {
     
     }
    }
+
+   public static void imprimirEstudiantes(){
+    for( estudiante e : estudiantes){
+        System.out.println(e.toString());
+    }
+   }
+
+   public static double calcularPromedioGrupo(){
+    double suma= 0;
+
+    for(estudiante e: estudiantes){
+        suma += e.getPromedio();
+    }
+
+    return suma/ estudiantes.length;
+
+   }
     
     public static void main(String[] args) throws IOException{
         int N;
         
-        
-
-        //Arreglo de tipo de dato primitiva(double)
-        double[] calificaciones;
-        double suma = 0;
         double promedio;
             
         System.out.println("Programa que calgula promedio de grupo");  
@@ -62,24 +74,16 @@ public class promedio {
         //Construyendo el areeglo de estudiantes
         estudiantes = new estudiante[N];
 
-        //contruimos el arreglo de calificaciones 
-        calificaciones = new double[N];
+        //Lectura de ka informacion de los estudiantes
 
-        
-        //leer las calificaciones de cada alumno
-        //     for (int i =0; i<calificaciones.length; i++){
-        //         System.out.println("Escribe la calificación del alumno: " + (i+1) + ": ");
-        //         entrada = bufer.readLine();
-        //         calificaciones[i] = Double.parseDouble(entrada);
-        //         suma += calificaciones[i];
-        //     }
-        // promedio = suma / N;
+        leerEstudiantes();
 
+        //Imprimir contenido del arreglo estudiantes
 
-        System.out.println("Las calificaciones del grupp son: ");
-        for(int i = 0; i< calificaciones.length;i++){
-            System.out.println(calificaciones[i]);
-        }
+        imprimirEstudiantes();
+
+        //Metodo de calcular promedio del grupo
+        promedio = calcularPromedioGrupo();
         System.out.println("El promedio del grupo es: " + promedio);
     }
     
